@@ -7,12 +7,17 @@ class App extends Component {
     super();
 
     this.state = {
-      data: [
-        {name: 'Lorem', id:'1',  profileURL: 'https://i0.wp.com/www.repol.copl.ulaval.ca/wp-content/uploads/2019/01/default-user-icon.jpg'},
-        {name: 'Ipsome', id:'2',  profileURL: 'https://i0.wp.com/www.repol.copl.ulaval.ca/wp-content/uploads/2019/01/default-user-icon.jpg'},
-        {name: 'Tony', id:'3',  profileURL: 'https://i0.wp.com/www.repol.copl.ulaval.ca/wp-content/uploads/2019/01/default-user-icon.jpg'}
-      ]
+      data: []
     }
+  }
+
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => response.json())
+    .then(json => {
+                    console.log(json);
+                    this.setState({data: json});
+                  })
   }
   render() {
     return (
